@@ -1,0 +1,33 @@
+{
+  "name": "angular-typer",
+  "description": "Angular directive to simulate someone typing out a list of words",
+  "main": "dist/typer.min.js",
+  "authors": [
+    "Pete Redmond <pete@httpete.com> (http://httpete.com)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "directive"
+  ],
+  "homepage": "https://github.com/httpete-ire/typer",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "0.5.6",
+  "_release": "0.5.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.5.6",
+    "commit": "a1f232b2ee0e94c40b0113dcb161a0e52039b2f3"
+  },
+  "_source": "https://github.com/httpete-ire/typer.git",
+  "_target": "^0.5.6",
+  "_originalSource": "angular-typer",
+  "_direct": true
+}

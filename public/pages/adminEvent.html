@@ -1,0 +1,66 @@
+<div class="col-sm-2">
+<div class="navbar navbar-inverse navbar-fixed-left" style="left: 0px;">
+  <a class="navbar-brand" href="#">Brand</a>
+  <ul class="nav navbar-nav">
+   <!-- <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+     <ul class="dropdown-menu" role="menu">
+      <li><a href="#">Sub Menu1</a></li>
+      <li><a href="#">Sub Menu2</a></li>
+      <li><a href="#">Sub Menu3</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Sub Menu4</a></li>
+      <li><a href="#">Sub Menu5</a></li>
+     </ul>
+   </li> -->
+   <li><a href="#!/admin">Dashboard</a></li>
+   <li><a href="#!/adminEvent">Events</a></li>
+   <li><a href="#!/queryList">Queries</a></li>
+  </ul>
+</div>
+</div>
+<div class="col-sm-8">
+<button class="btn btn-default pull-right" ng-class="add!==1?'btn-default':'btn-danger'" ng-click="add!==1?add=1:add=0">
+  <span style="color:black;" ng-if="add!==1">Add Event</span>
+  <span style="color:white;" ng-if="add===1">Cancle</span></button>
+<div ng-hide="add===1">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Event name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="u in events" ng-click="getLoc(u.event)">
+        <td>{{u.event}}</td>
+      </tr>      
+    </tbody>
+  </table>
+</div>
+<form ng-controller="imageCtrl as up" name="up.upload_form" ng-show="add===1" style="margin:10px;">
+  <div class="form-inline">
+    <label>Event name:</label>
+            <input type="text" class="form-control" ng-model="eventName" placeholder="Event name ... ">
+  </div>
+  <div class="form-group">
+    <label>Event description:</label>
+            <textarea rows="4" cols="50" class="form-control" style="height: 300px;" ng-model="eventDescription" placeholder="Event name ... "></textarea>
+  </div>
+            <input 
+                type="file" 
+                ngf-select 
+                ng-model="up.file" 
+                name="file" 
+                ngf-pattern="'image/*'"
+                accept="image/*" 
+                ngf-max-size="20MB" 
+                />
+            Image thumbnail: <img style="width:100px;" ng-show="!!up.file" ngf-thumbnail="up.file || '/thumb.jpg'"/>
+            <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+            <i ng-show="up.upload_form.file.$error.maxSize">File too large 
+            {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+            <p>{{up.progress}}</p>
+            <button class="btn btn-success pull-right" ng-click="up.submit()" ng-if="add===1">Save</button>
+</form>
+  
+  
+</div>
