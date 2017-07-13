@@ -72,6 +72,7 @@
     text-decoration: none;
     border-radius: 50%;
     margin-left: 10%;
+    margin-top: 2%;
 }
 
 /* Add a hover effect if you want */
@@ -874,7 +875,6 @@ fieldset[disabled] .btn-theme {
   max-width: 100%;
   max-height: 100%;
   vertical-align: middle;
-  box-shadow: 5 5 5 white;
 }
 
 .header .logo-img-main {

@@ -117,4 +117,11 @@ router.post('/upload', function(req, res) {
              res.json({error_code:0,err_desc:null});
         });
 });
+router.post('/remove',function(req,res){
+    maindb(function (db) {
+        db.collection('event', function(err, collection) {
+            collection.deleteOne({_id: new ObjectID(req.body.id)});
+        });
+    });
+});
 module.exports = router;

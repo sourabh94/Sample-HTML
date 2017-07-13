@@ -27,11 +27,13 @@
     <thead>
       <tr>
         <th>Event name</th>
+        <th>Remove</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="u in events" ng-click="getLoc(u.event)">
-        <td>{{u.event}}</td>
+      <tr ng-repeat="u in events">
+        <td ng-click="getLoc(u.event)">{{u.event}}</td>
+        <td><button class="btn btn-danger" ng-click="delete(u._id)">Delete</td>
       </tr>      
     </tbody>
   </table>

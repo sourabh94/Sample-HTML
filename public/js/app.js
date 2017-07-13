@@ -131,7 +131,7 @@ angular.module('eventManager', ['ngRoute', 'ngStorage', 'angularModalService','n
             };
             
         })
-        .controller('adminCtrl',function($sessionStorage,$location,$scope,$http){
+        .controller('adminCtrl',function($sessionStorage,$location,$scope,$http,$route){
             if($sessionStorage.atoken === undefined)
                 $location.path('/login');
             $http.get('/eventlist').then(function(data){
@@ -140,6 +140,12 @@ angular.module('eventManager', ['ngRoute', 'ngStorage', 'angularModalService','n
             });
             $scope.getLoc = function(u){
                 $location.path('/adminEvent/'+u);
+            };
+            $scope.delete= function(id){
+                var data = {id:id};
+                $http.post('/admin/remove',data).then(function(data){
+                    $route.reload();
+                });
             };
         })
         .controller('imageCtrl', ['Upload', '$window','$scope', function (Upload, $window,$scope) {
