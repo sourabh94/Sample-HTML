@@ -1,4 +1,4 @@
-angular.module('eventManager', ['ngRoute', 'ngStorage', 'angularModalService','ngFileUpload','typer'])
+angular.module('eventManager', ['ngRoute', 'ngStorage', 'angularModalService','ngFileUpload','typer','ngAnimate','toaster'])
         .config(function ($routeProvider, $httpProvider) {
 //            $locationProvider.html5Mode({
 //             enabled: true,
@@ -74,14 +74,17 @@ angular.module('eventManager', ['ngRoute', 'ngStorage', 'angularModalService','n
                 }
             };
         })
+        .factory('MyCache', function ($cacheFactory) {
+            return $cacheFactory('myCache');
+        })
         .controller('mainCtrl',function($sessionStorage,$scope){
             $scope.start = false;
             $scope.Trigger = function(){
                 $scope.start = true;
             };
         })
-        .controller('eventCtrl',function($sessionStorage,$location,$scope,$http,$routeParams){
-            $http.get('/eventlist').then(function(data){
+        .controller('eventCtrl',function($sessionStorage,$location,$scope,$http,$routeParams,MyCache){
+            $http.get('/eventlist',{ cache: true }).then(function(data){
                 console.log(data.data);
                 $scope.events = data.data;
             });
@@ -112,7 +115,7 @@ angular.module('eventManager', ['ngRoute', 'ngStorage', 'angularModalService','n
                 $location.path('/query/'+u);
             };
         })
-        .controller('contactCtrl',function($sessionStorage,$location,$scope,$http){
+        .controller('contactCtrl',function($sessionStorage,$location,$scope,$http,toaster){
             $scope.submit = function(){
                 var data = {
                     name: $scope.name,
@@ -126,7 +129,13 @@ angular.module('eventManager', ['ngRoute', 'ngStorage', 'angularModalService','n
                     method: "POST",
                     data: data,
                 }).then(function(data){
-                console.log(data);
+                toaster.success({title: "Success", body:"We will contact you soon"});
+                toaster.pop('error', "Email Sended", '<ul><li>Render html</li></ul>', 
+                    null, 'trustedHtml', 5000, 'trustedHtml', function(toaster) {
+                var match = toaster.body.match(/http[s]?:\/\/[^\s]+/);
+                if (match) $window.open(match[0]);
+                return true;
+                });
             });
             };
             

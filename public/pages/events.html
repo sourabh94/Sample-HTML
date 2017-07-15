@@ -1,7 +1,4 @@
 <div ng-include src="'/pages/header.html'"></div>
-
-        <!--========== PAGE LAYOUT ==========-->
-        <!-- Products -->
         <div>
             <div class="container content-lg">
                 <div class="row text-center margin-b-40">
@@ -11,7 +8,7 @@
                 </div>
 
                 <div class="row">
-                    <!-- Latest Products -->
+                <div ng-if="events.length!==0">
                     <div ng-repeat="a in events">
                     <div class="col-sm-4 sm-margin-b-50" style="height: 300px;">
                         <div class="margin-b-20">
@@ -21,10 +18,12 @@
                         <a class="link" href="#!/event/{{a.event}}">Read More</a>
                     </div>
                     </div>
-                    <!-- End Latest Products -->
+                </div>
+                    <div ng-if="events.length===0">
+                        <h3 style="text-align: center;">No events available...</h3>
+                    </div>
                 </div>
                 <!--// end row -->
             </div>
 
         </div>
-        <!-- End Products -->
