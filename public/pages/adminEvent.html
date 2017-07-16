@@ -61,7 +61,7 @@
             <i ng-show="up.upload_form.file.$error.maxSize">File too large 
             {{up.file.size / 1000000|number:1}}MB: max 20M</i>
             <p>{{up.progress}}</p>
-            <button class="btn btn-success pull-right" ng-click="up.submit()" ng-if="add===1">Save</button>
+            <button class="btn btn-success pull-right" ng-click="up.submit('insert')" ng-if="add===1">Save</button>
 </form>
   
   

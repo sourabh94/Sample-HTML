@@ -124,4 +124,50 @@ router.post('/remove',function(req,res){
         });
     });
 });
+router.post('/update',function(req,res){
+    upload(req,res,function(err){
+        if(req.file)
+        {
+            editEvent(req.body,req.file.filename);
+             if(err){
+                 res.json({error_code:1,err_desc:err});
+                 return;
+            }
+            else
+             res.json({error_code:0,err_desc:null});
+        }
+        else{
+            editEvent(req.body);
+             if(err){
+                 res.json({error_code:1,err_desc:err});
+                 return;
+            }
+            else
+             res.json({error_code:0,err_desc:null});   
+        }
+    });
+});
+var editEvent = function(event,img){
+    if(img){
+        var data = {
+        _id:new ObjectID(event.id),
+        event:event.event,
+        description:event.description,
+        imgname:img
+        };
+        maindb(function (db) {
+        db.collection('event').save(data).then(function (data) {
+        });
+        });    
+    }
+    else{
+        maindb(function (db) {
+        db.collection('event').updateOne({_id:new ObjectID(event.id)},
+            {$set:{event:event.event,description:event.description}},
+            function (err,data) {
+        });
+        });   
+    }
+    
+};
 module.exports = router;

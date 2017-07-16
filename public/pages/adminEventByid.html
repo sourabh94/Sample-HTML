@@ -39,13 +39,14 @@
 </div>
 </div>
 <div class="col-sm-8" style="margin-top: 10%;" ng-if="edit===1">
+<form ng-controller="imageCtrl as up" name="up.upload_form">
   <div class="form-inline">
     <label>Event name:</label>
-            <input type="text" class="form-control" name="" ng-modal="event" value="{{event.event}}">
+            <input type="text" class="form-control" ng-model="event.event" value="{{event.event}}">
   </div>
   <div class="form-group">
     <label>Event description:</label>
-            <textarea rows="4" cols="50" class="form-control" style="height: 300px;" ng-model="eventDescription" value="{{event.description}}"></textarea>
+            <textarea rows="4" cols="50" class="form-control" style="height: 300px;" ng-model="event.description" value="{{event.description}}"></textarea>
   </div>
             <input 
                 type="file" 
@@ -61,6 +62,7 @@
             <i ng-show="up.upload_form.file.$error.maxSize">File too large 
             {{up.file.size / 1000000|number:1}}MB: max 20M</i>
             <p>{{up.progress}}</p>
-            <button class="btn btn-success pull-right" ng-click="up.submit()">Save</button>
+            <button class="btn btn-success pull-right" ng-click="up.submit('update',event._id)">Save</button>
+</form>
 </div>
 </div>

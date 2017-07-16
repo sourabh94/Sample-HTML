@@ -55,11 +55,14 @@ angular.module('eventManager', ['ngRoute', 'ngStorage', 'angularModalService','n
             $rootScope.$on("$routeChangeStart", function (event, next, current) {
                 if ($sessionStorage.atoken === null || $sessionStorage.atoken === undefined) {
                     // no logged user, we should be going to #login
-                    if (next.templateUrl === "pages/home.html" || next.templateUrl === "pages/login.html" || next.templateUrl === "pages/admin.html"
-                     || next.templateUrl === "pages/events.html" || next.templateUrl === "pages/eventbyid.html"
-                      || next.templateUrl === "pages/contact_form.html") {
+                    if (next.templateUrl === "pages/home.html" || next.templateUrl === "pages/login.html"
+                     || next.templateUrl === "pages/events.html" || next.templateUrl === "pages/eventbyid.html") {
                         // already going to #login, no redirect needed
-                    } else {
+                    } 
+                    else if(next.templateUrl === 'pages/admin.html'){
+                        $location.path('/login');
+                    }
+                    else {
                         // not going to #login, we should redirect now
                         $location.path('/home');
                     }
@@ -115,7 +118,7 @@ angular.module('eventManager', ['ngRoute', 'ngStorage', 'angularModalService','n
                 $location.path('/query/'+u);
             };
         })
-        .controller('contactCtrl',function($sessionStorage,$location,$scope,$http,toaster){
+        .controller('contactCtrl',function($sessionStorage,$location,$scope,$http,$window,toaster){
             $scope.submit = function(){
                 var data = {
                     name: $scope.name,
@@ -157,12 +160,18 @@ angular.module('eventManager', ['ngRoute', 'ngStorage', 'angularModalService','n
                 });
             };
         })
-        .controller('imageCtrl', ['Upload', '$window','$scope', function (Upload, $window,$scope) {
+        .controller('imageCtrl', ['Upload', '$window','$scope', function (Upload, $window,$scope,$routeParams) {
+                var event = {};
                 var vm = this;
-                vm.submit = function () { //function to call on form submit
-                    if (vm.upload_form.file.$valid && vm.file) { //check if from is valid
-                        vm.upload(vm.file); //call upload function
-                    }
+                vm.submit = function (status,id) { //function to call on form submit
+                        if(status === 'insert'){
+                            if (vm.upload_form.file.$valid && vm.file) {
+                           vm.upload(vm.file); //call upload function
+                            }
+                        }
+                        else if (status === 'update'){
+                            vm.edit(vm.file,id); //call upload function
+                        }
                 };
 
                 vm.upload = function (file) {
@@ -176,6 +185,32 @@ angular.module('eventManager', ['ngRoute', 'ngStorage', 'angularModalService','n
                         data: data //pass file as data, should be user ng-model
                     }).then(function (resp) { //upload function returns a promise
                         if (resp.data.error_code === 0) { //validate success
+                            $window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+                        } else {
+                            $window.alert('an error occured');
+                        }
+                    }, function (resp) { //catch error
+                        console.log('Error status: ' + resp.status);
+                        $window.alert('Error status: ' + resp.status);
+                    }, function (evt) {
+                        console.log(evt);
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                        console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                        vm.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+                    });
+                };
+                vm.edit = function (file,id) {
+                    var data = {
+                        id:id,
+                        file: file,
+                        event: $scope.event.event,
+                        description: $scope.event.description
+                    };
+                    Upload.upload({
+                        url: '/admin/update', 
+                        data: data 
+                    }).then(function (resp) { 
+                        if (resp.data.error_code === 0) { 
                             $window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
                         } else {
                             $window.alert('an error occured');
