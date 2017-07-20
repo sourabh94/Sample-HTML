@@ -5,7 +5,7 @@ angular.module('eventManager', ['ngRoute', 'ngStorage', 'angularModalService','n
            //  rewriteLinks: false
            //  });
             // $httpProvider.interceptors.push('httpRequestInterceptor');
-            $locationProvider.html5Mode(true);
+            $locationProvider.html5Mode(false);
             $locationProvider.hashPrefix('!');
             $routeProvider
                     .when('/home', {
