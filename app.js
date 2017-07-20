@@ -25,8 +25,8 @@ app.use('/admin', users);
 
   // Here we require the prerender middleware that will handle requests from Search Engine crawlers 
   // We set the token only if we're using the Prerender.io service 
-  app.use(prerender); 
-app.get('/*', function(req, res){ 
+app.use(prerender); 
+app.get('*', function(req, res){ 
   res.sendfile('./public/index.html'); 
 });
 app.use(function (req, res, next) {
