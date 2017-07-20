@@ -1,10 +1,12 @@
 angular.module('eventManager', ['ngRoute', 'ngStorage', 'angularModalService','ngFileUpload','typer','ngAnimate','toaster'])
-        .config(function ($routeProvider, $httpProvider) {
+        .config(function ($routeProvider, $httpProvider,$locationProvider) {
            // $locationProvider.html5Mode({
            //  enabled: true,
            //  rewriteLinks: false
            //  });
             // $httpProvider.interceptors.push('httpRequestInterceptor');
+            $locationProvider.html5Mode(true);
+            $locationProvider.hashPrefix('!');
             $routeProvider
                     .when('/home', {
                         templateUrl: 'pages/home.html',
