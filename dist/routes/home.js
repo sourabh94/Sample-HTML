@@ -1,0 +1,1 @@
+var indexPath=path.resolve(__dirname,"../"+process.env.PUBLIC_FOLDER);router.get("/:user/:stream/:slug",function(e,r,t){if(-1==e.headers["user-agent"].indexOf("facebook"))return t()}),router.get("/*",function(e,r){express.static(indexPath)});

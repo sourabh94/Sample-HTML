@@ -1,0 +1,1 @@
+var Db=require("mongodb").Db,Connection=require("mongodb").Connection,Server=require("mongodb").Server,connectionInstance;module.exports=function(n){connectionInstance?n(connectionInstance):new Db("tripstr",new Server("127.0.0.1","27017",{auto_reconnect:!0})).open(function(e,o){if(e)throw new Error(e);connectionInstance=o,n(o)})};

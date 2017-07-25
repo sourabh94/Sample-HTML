@@ -1,0 +1,29 @@
+<div ng-include src="'/pages/header.html'"></div>
+        <div>
+            <div class="container content-lg">
+                <div class="row text-center margin-b-40">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <h2>Events</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                <div ng-if="events.length!==0">
+                    <div ng-repeat="a in events">
+                    <div class="col-sm-4 sm-margin-b-50" style="height: 300px;">
+                        <div class="margin-b-20">
+                            <img class="img-responsive wow " style="height:50%;width:70%;" src="img/events/{{a.imgname}}">
+                        </div>
+                        <h4><a href="#!/event/{{a.event}}">{{a.event}}</a> </h4>
+                        <a class="link" href="#!/event/{{a.event}}">Read More</a>
+                    </div>
+                    </div>
+                </div>
+                    <div ng-if="events.length===0">
+                        <h3 style="text-align: center;">No events available...</h3>
+                    </div>
+                </div>
+                <!--// end row -->
+            </div>
+
+        </div>
