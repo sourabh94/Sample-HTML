@@ -1,0 +1,31 @@
+{
+  "name": "angular-weblogng",
+  "version": "0.0.5",
+  "main": "dist/angular-weblogng.min.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {
+    "angular": ">= 1.2.0",
+    "weblogng-logger": ">= 0.6.4"
+  },
+  "devDependencies": {
+    "angular-mocks": ">= 1.2.0",
+    "requirejs": "~2.1.5",
+    "jasmine": "~1.3.1"
+  },
+  "homepage": "https://github.com/weblogng/angular-weblogng",
+  "_release": "0.0.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.5",
+    "commit": "7cf6739b2a607e37ec05f254673cdea10fad0d81"
+  },
+  "_source": "https://github.com/weblogng/angular-weblogng.git",
+  "_target": "^0.0.5",
+  "_originalSource": "angular-weblogng",
+  "_direct": true
+}

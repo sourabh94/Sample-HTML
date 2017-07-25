@@ -1,0 +1,7 @@
+.idea
+.project
+*.iml
+*.iws
+dist
+coverage
+node_modules
