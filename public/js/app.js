@@ -1,4 +1,4 @@
-angular.module('eventManager', ['ngRoute', 'ngStorage', 'angularModalService','ngFileUpload','typer','ngAnimate','toaster'])
+angular.module('eventManager', ['ngRoute', 'ngStorage','ngFileUpload','typer','ngAnimate','toaster'])
         .config(function ($routeProvider, $httpProvider,$locationProvider) {
            // $locationProvider.html5Mode({
            //  enabled: true,
