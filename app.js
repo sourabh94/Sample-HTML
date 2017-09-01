@@ -3,10 +3,9 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var prerender = require('prerender-node').set('prerenderToken', 'kV4grh1WykGJeuWMKIkJ');
 var index = require('./routes/index');
 var users = require('./routes/users');
-
+var compression = require('compression');
 var app = express();
 
 // view engine setup
@@ -18,6 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(compression());
 
 app.use('/', index);
 app.use('/admin', users);
@@ -25,7 +25,7 @@ app.use('/admin', users);
 
   // Here we require the prerender middleware that will handle requests from Search Engine crawlers 
   // We set the token only if we're using the Prerender.io service 
-app.use(prerender); 
+//app.use(prerender); 
 // app.get('*', function(req, res){ 
 //   res.sendfile('./public/index.html'); 
 // });
