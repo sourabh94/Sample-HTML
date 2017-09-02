@@ -1,5 +1,5 @@
 angular.module('eventManager', ['ngRoute', 'ngStorage','ngFileUpload','typer','toaster'])
-        .config(function ($routeProvider, $httpProvider,$locationProvider) {
+        .config(['$routeProvider','$httpProvider','$locationProvider',function ($routeProvider, $httpProvider,$locationProvider) {
            // $locationProvider.html5Mode({
            //  enabled: true,
            //  rewriteLinks: false
@@ -51,8 +51,8 @@ angular.module('eventManager', ['ngRoute', 'ngStorage','ngFileUpload','typer','t
                     .otherwise({
                         redirectTo: '/home'
                     });
-        })
-        .run(function ($rootScope, $location, $http, $sessionStorage) {
+        }])
+        .run(['$rootScope', '$location', '$http', '$sessionStorage',function ($rootScope, $location, $http, $sessionStorage) {
             // register listener to watch route changes
             $rootScope.$on("$routeChangeStart", function (event, next, current) {
                 if ($sessionStorage.atoken === null || $sessionStorage.atoken === undefined) {
@@ -70,25 +70,25 @@ angular.module('eventManager', ['ngRoute', 'ngStorage','ngFileUpload','typer','t
                     }
                 }
             });
-        })
-        .factory('httpRequestInterceptor', function ($sessionStorage) {
+        }])
+        .factory('httpRequestInterceptor',['$sessionStorage', function ($sessionStorage) {
             return {
                 request: function (config) {
                     config.headers['token'] = $sessionStorage.atoken;
                     return config;
                 }
             };
-        })
-        .factory('MyCache', function ($cacheFactory) {
+        }])
+        .factory('MyCache',[ '$cacheFactory',function ($cacheFactory) {
             return $cacheFactory('myCache');
-        })
-        .controller('mainCtrl',function($sessionStorage,$scope){
+        }])
+        .controller('mainCtrl',['$sessionStorage','$scope',function($sessionStorage,$scope){
             $scope.start = false;
             $scope.Trigger = function(){
                 $scope.start = true;
             };
-        })
-        .controller('eventCtrl',function($sessionStorage,$location,$scope,$http,$routeParams,MyCache){
+        }])
+        .controller('eventCtrl',['$sessionStorage','$location','$scope','$http','$routeParams','MyCache',function($sessionStorage,$location,$scope,$http,$routeParams,MyCache){
             $http.get('/eventlist',{ cache: true }).then(function(data){
                 console.log(data.data);
                 $scope.events = data.data;
@@ -100,8 +100,8 @@ angular.module('eventManager', ['ngRoute', 'ngStorage','ngFileUpload','typer','t
                 $scope.event = data.data;
             }); 
             };
-        })
-        .controller('queryCtrl',function($sessionStorage,$location,$scope,$http,$routeParams){
+        }])
+        .controller('queryCtrl',['$sessionStorage','$location','$scope','$http','$routeParams',function($sessionStorage,$location,$scope,$http,$routeParams){
             $scope.getList = function(){
 
             $http.get('/admin/querylist').then(function(data){
@@ -119,8 +119,8 @@ angular.module('eventManager', ['ngRoute', 'ngStorage','ngFileUpload','typer','t
             $scope.getLoc = function(u){
                 $location.path('/query/'+u);
             };
-        })
-        .controller('contactCtrl',function($sessionStorage,$location,$scope,$http,$window,toaster){
+        }])
+        .controller('contactCtrl',['$sessionStorage','$location','$scope','$http','$window','toaster',function($sessionStorage,$location,$scope,$http,$window,toaster){
             $scope.submit = function(){
                 var data = {
                     name: $scope.name,
@@ -142,10 +142,9 @@ angular.module('eventManager', ['ngRoute', 'ngStorage','ngFileUpload','typer','t
                 return true;
                 });
             });
-            };
-            
-        })
-        .controller('adminCtrl',function($sessionStorage,$location,$scope,$http,$route){
+            }; 
+        }])
+        .controller('adminCtrl',['$sessionStorage','$location','$scope','$http','$route',function($sessionStorage,$location,$scope,$http,$route){
             if($sessionStorage.atoken === undefined)
                 $location.path('/login');
             $http.get('/eventlist').then(function(data){
@@ -161,7 +160,7 @@ angular.module('eventManager', ['ngRoute', 'ngStorage','ngFileUpload','typer','t
                     $route.reload();
                 });
             };
-        })
+        }])
         .controller('imageCtrl', ['Upload', '$window','$scope', function (Upload, $window,$scope,$routeParams) {
                 var event = {};
                 var vm = this;
@@ -228,15 +227,14 @@ angular.module('eventManager', ['ngRoute', 'ngStorage','ngFileUpload','typer','t
                     });
                 };
             }])
-        .controller('eventAdminCtrl',function($sessionStorage,$location,$scope,$http,$routeParams,$route){
+        .controller('eventAdminCtrl',['$http','$routeParams',function($http,$routeParams){
             $scope.getEvent = function(){
                 $http.get('/event/'+$routeParams.name).then(function(data){
                     $scope.event = data.data;
                 });
-            };
-            
-        })
-        .controller('loginCtrl',function($sessionStorage,$location,$scope,$http,$routeParams,$route){
+            };       
+        }])
+        .controller('loginCtrl',['$sessionStorage','$location','$scope','$http','$routeParams','$route',function($sessionStorage,$location,$scope,$http,$routeParams,$route){
           $scope.check = function () {
             $http.post('/admin/checkUsr').then(function(data){
                 });  
@@ -266,4 +264,4 @@ angular.module('eventManager', ['ngRoute', 'ngStorage','ngFileUpload','typer','t
                         $location.path('/admin');
                 });
             };  
-        })
+        }])
