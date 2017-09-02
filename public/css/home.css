@@ -42,7 +42,7 @@
 	background-color: white;
 }
 .dp{
-	height:170px;width: 170px;border-radius: 50%;margin:auto;border: #cccccc solid 4px; box-shadow: 0 0 20px #000;
+	border-radius: 50%;margin:auto;border: #cccccc solid 4px; box-shadow: 0 0 20px #000;
 }
 .name-link{
 	color: black;font-size: 20px;
