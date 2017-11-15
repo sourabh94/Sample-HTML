@@ -1,10 +1,5 @@
-angular.module('eventManager', ['ngRoute', 'ngStorage','ngFileUpload','typer','toaster'])
-        .config(['$routeProvider','$httpProvider','$locationProvider',function ($routeProvider, $httpProvider,$locationProvider) {
-           // $locationProvider.html5Mode({
-           //  enabled: true,
-           //  rewriteLinks: false
-           //  });
-            // $httpProvider.interceptors.push('httpRequestInterceptor');
+angular.module('eventManager', ['ngRoute'])
+        .config(['$routeProvider','$locationProvider',function ($routeProvider,$locationProvider) {
             $locationProvider.html5Mode(false);
             $locationProvider.hashPrefix('!');
             $routeProvider
@@ -12,65 +7,42 @@ angular.module('eventManager', ['ngRoute', 'ngStorage','ngFileUpload','typer','t
                         templateUrl: 'pages/home.html',
                         controller: 'mainCtrl'
                     })
-                    .when('/events', {
-                        templateUrl: 'pages/events.html',
-                        controller: 'eventCtrl'
+                    .when('/gallery/video', {
+                        templateUrl: 'pages/video.html',
+                        controller: 'videoCtrl'
                     })
-                    .when('/event/:event', {
-                        templateUrl: 'pages/eventbyid.html',
-                        controller: 'eventCtrl'
+                    .when('/gallery/photo', {
+                        templateUrl: 'pages/photo.html',
+                        controller: 'photoCtrl'
                     })
                     .when('/contact', {
-                        templateUrl: 'pages/contact_form.html',
+                        templateUrl: 'pages/contact.html',
                         controller: 'contactCtrl'
-                    })
-                    .when('/admin', {
-                        templateUrl: 'pages/admin.html',
-                        controller: 'adminCtrl'
-                    })
-                    .when('/adminEvent', {
-                        templateUrl: 'pages/adminEvent.html',
-                        controller: 'adminCtrl'
-                    })
-                    .when('/adminEvent/:name', {
-                        templateUrl: 'pages/adminEventByid.html',
-                        controller: 'eventAdminCtrl'
-                    })
-                    .when('/queryList', {
-                        templateUrl: 'pages/queryList.html',
-                        controller: 'queryCtrl'
-                    })
-                    .when('/query/:id', {
-                        templateUrl: 'pages/queryById.html',
-                        controller: 'queryCtrl'
-                    })
-                    .when('/login', {
-                        templateUrl: 'pages/login.html',
-                        controller: 'loginCtrl'
                     })
                     .otherwise({
                         redirectTo: '/home'
                     });
         }])
-        .run(['$rootScope', '$location', '$http', '$sessionStorage',function ($rootScope, $location, $http, $sessionStorage) {
-            // register listener to watch route changes
-            $rootScope.$on("$routeChangeStart", function (event, next, current) {
-                if ($sessionStorage.atoken === null || $sessionStorage.atoken === undefined) {
-                    // no logged user, we should be going to #login
-                    if (next.templateUrl === "pages/home.html" || next.templateUrl === "pages/login.html"
-                     || next.templateUrl === "pages/events.html" || next.templateUrl === "pages/eventbyid.html") {
-                        // already going to #login, no redirect needed
-                    } 
-                    else if(next.templateUrl === 'pages/admin.html'){
-                        $location.path('/login');
-                    }
-                    else {
-                        // not going to #login, we should redirect now
-                        $location.path('/home');
-                    }
-                }
-            });
-        }])
+  .directive('slider', function() {
+    return {
+      restrict: 'EA',
+      replace: true,
+      transclude: true,
+      scope: {
+        slides: '=',
+        animation: '=',
+        interval: '='
+      },
+      controller: 'SliderController',
+      templateUrl: 'slider.html'
+    };
+  })
+        .directive('navbar', function() {
+        var directive = {}
+        directive.restrict = 'E';
+        directive.templateUrl = "pages/header.html";
+        return directive;
+        })
         .factory('httpRequestInterceptor',['$sessionStorage', function ($sessionStorage) {
             return {
                 request: function (config) {
@@ -82,186 +54,90 @@ angular.module('eventManager', ['ngRoute', 'ngStorage','ngFileUpload','typer','t
         .factory('MyCache',[ '$cacheFactory',function ($cacheFactory) {
             return $cacheFactory('myCache');
         }])
-        .controller('mainCtrl',['$sessionStorage','$scope',function($sessionStorage,$scope){
+    .controller('SliderController',[ '$scope','$timeout', function($scope, $timeout) {
+    var settings = {
+      animation: $scope.animation || 'animate-fade',
+      interval: $scope.interval || 5000
+    };
+    $scope.activeIndex = 0;
+    $scope.setActiveIndex = function(index) {
+      $scope.isPrev = index < $scope.activeIndex;
+      $scope.activeIndex = index;
+    };
+    $scope.setAnimation = function(animation) {
+      return animation || settings.animation;
+    };
+    $scope.isActiveIndex = function(index) {
+      return $scope.activeIndex === index;
+    };
+    $scope.next = function() {
+      $scope.isPrev = false;
+      $scope.activeIndex = $scope.activeIndex < $scope.slides.length - 1 ? $scope.activeIndex + 1 : 0;
+    };
+    $scope.prev = function() {
+      $scope.isPrev = true;
+      $scope.activeIndex = $scope.activeIndex > 0 ? $scope.activeIndex - 1 : $scope.slides.length - 1;
+    };
+    if (settings.interval) {
+      var interval;
+      $scope.play = function() {
+        interval = $timeout(function() {
+           $scope.next();
+        }, settings.interval);
+      };
+      $scope.pause = function() {
+        $timeout.cancel(interval);
+      };
+      $scope.$watch('activeIndex', function() {
+        $scope.pause();
+        $scope.play();
+      });
+    }
+    }])
+    .controller('mainCtrl',['$scope','$location',function($scope,$location){
             $scope.start = false;
+             $scope.slides = [
+                { src: './img/9.jpg',
+                  caption: 'Slide 1' },
+                { src: './img/8.jpg',
+                  caption: 'Slide 2' },
+                { src: './img/7.jpg',
+                  caption: 'Slide 3' },
+                { src: './img/6.jpg',
+                  caption: 'Slide 4' }
+                ];
             $scope.Trigger = function(){
                 $scope.start = true;
             };
-        }])
-        .controller('eventCtrl',['$sessionStorage','$location','$scope','$http','$routeParams','MyCache',function($sessionStorage,$location,$scope,$http,$routeParams,MyCache){
-            $http.get('/eventlist',{ cache: true }).then(function(data){
-                console.log(data.data);
-                $scope.events = data.data;
-            });
-            console.log($routeParams.event);
-            $scope.getEvent = function(){
-               $http.get('/event/'+$routeParams.event).then(function(data){
-                console.log(data.data);
-                $scope.event = data.data;
-            }); 
+            $scope.goTo = function(val){
+                console.log(val);
+                $location.path('/'+val);
             };
-        }])
-        .controller('queryCtrl',['$sessionStorage','$location','$scope','$http','$routeParams',function($sessionStorage,$location,$scope,$http,$routeParams){
-            $scope.getList = function(){
-
-            $http.get('/admin/querylist').then(function(data){
-                console.log(data.data);
-                $scope.query = data.data;
-            });
-            };
-            $scope.getQuery = function(){
-                $http.get('/admin/query/'+$routeParams.id).then(function(data){
-                    $scope.queryOne = data.data;
-                    console.log(data);
-                });
-            };
-
-            $scope.getLoc = function(u){
-                $location.path('/query/'+u);
-            };
-        }])
-        .controller('contactCtrl',['$sessionStorage','$location','$scope','$http','$window','toaster',function($sessionStorage,$location,$scope,$http,$window,toaster){
-            $scope.submit = function(){
-                var data = {
-                    name: $scope.name,
-                    email: $scope.email,
-                    subject: $scope.subject,
-                    message: $scope.message,
-                    phone: $scope.phone
-                };    
-            $http({
-                    url: '/addQuery',
-                    method: "POST",
-                    data: data,
-                }).then(function(data){
-                toaster.success({title: "Success", body:"We will contact you soon"});
-                toaster.pop('error', "Email Sended", '<ul><li>Render html</li></ul>', 
-                    null, 'trustedHtml', 5000, 'trustedHtml', function(toaster) {
-                var match = toaster.body.match(/http[s]?:\/\/[^\s]+/);
-                if (match) $window.open(match[0]);
-                return true;
-                });
-            });
-            }; 
-        }])
-        .controller('adminCtrl',['$sessionStorage','$location','$scope','$http','$route',function($sessionStorage,$location,$scope,$http,$route){
-            if($sessionStorage.atoken === undefined)
-                $location.path('/login');
-            $http.get('/eventlist').then(function(data){
-                console.log(data.data);
-                $scope.events = data.data;
-            });
-            $scope.getLoc = function(u){
-                $location.path('/adminEvent/'+u);
-            };
-            $scope.delete= function(id){
-                var data = {id:id};
-                $http.post('/admin/remove',data).then(function(data){
-                    $route.reload();
-                });
-            };
-        }])
-        .controller('imageCtrl', ['Upload', '$window','$scope', function (Upload, $window,$scope,$routeParams) {
-                var event = {};
-                var vm = this;
-                vm.submit = function (status,id) { //function to call on form submit
-                        if(status === 'insert'){
-                            if (vm.upload_form.file.$valid && vm.file) {
-                           vm.upload(vm.file); //call upload function
-                            }
-                        }
-                        else if (status === 'update'){
-                            vm.edit(vm.file,id); //call upload function
-                        }
-                };
-
-                vm.upload = function (file) {
-                    var data = {
-                        file: file,
-                        event: $scope.eventName,
-                        description: $scope.eventDescription
-                    };
-                    Upload.upload({
-                        url: '/admin/upload', //webAPI exposed to upload the file
-                        data: data //pass file as data, should be user ng-model
-                    }).then(function (resp) { //upload function returns a promise
-                        if (resp.data.error_code === 0) { //validate success
-                            $window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
-                        } else {
-                            $window.alert('an error occured');
-                        }
-                    }, function (resp) { //catch error
-                        console.log('Error status: ' + resp.status);
-                        $window.alert('Error status: ' + resp.status);
-                    }, function (evt) {
-                        console.log(evt);
-                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                        console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-                        vm.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
-                    });
-                };
-                vm.edit = function (file,id) {
-                    var data = {
-                        id:id,
-                        file: file,
-                        event: $scope.event.event,
-                        description: $scope.event.description
-                    };
-                    Upload.upload({
-                        url: '/admin/update', 
-                        data: data 
-                    }).then(function (resp) { 
-                        if (resp.data.error_code === 0) { 
-                            $window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
-                        } else {
-                            $window.alert('an error occured');
-                        }
-                    }, function (resp) { //catch error
-                        console.log('Error status: ' + resp.status);
-                        $window.alert('Error status: ' + resp.status);
-                    }, function (evt) {
-                        console.log(evt);
-                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                        console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-                        vm.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
-                    });
-                };
-            }])
-        .controller('eventAdminCtrl',['$http','$routeParams',function($http,$routeParams){
-            $scope.getEvent = function(){
-                $http.get('/event/'+$routeParams.name).then(function(data){
-                    $scope.event = data.data;
-                });
-            };       
-        }])
-        .controller('loginCtrl',['$sessionStorage','$location','$scope','$http','$routeParams','$route',function($sessionStorage,$location,$scope,$http,$routeParams,$route){
-          $scope.check = function () {
-            $http.post('/admin/checkUsr').then(function(data){
-                });  
-          };
-          $scope.showErr = false;
-            $scope.login = function () {
-                var data = {
-                    username: $scope.user,
-                    password: $scope.pass
-                }
-                $http({
-                    url: '/admin/login',
-                    method: "POST",
-                    data: data,
-                })
-                        .then(function (data) {
-                            console.log(data);
-                            if (data.data.message) {
-                                $scope.showErr = true;
-                                $scope.err = data.data.message;
-                            } else {
-                                $sessionStorage.atoken = data.data.token;
-                                $sessionStorage.id = data.data.user._id;
-                            }
-                        }).then(function (data) {
-                            if($scope.showErr === false)
-                        $location.path('/admin');
-                });
-            };  
-        }])
+    }])
+    .controller('contactCtrl', ['$scope','$route', function($scope,$route) {
+        $scope.init = function () {
+            $route.reload();
+        };
+    }])
+    .controller('videoCtrl', ['$scope',  function($scope) {
+    $scope.videos=[{img:'img/6.jpg',no:1},{img:'img/7.jpg',no:1},{img:'img/5.jpg',no:1},{img:'img/7.jpg',no:1}];
+    }])
+    .controller('photoCtrl', ['$scope', function($scope) {
+        $scope.images = [
+            '/img/1/1.jpg',
+            '/img/1/2.jpg',
+            '/img/1/3.jpg',
+            '/img/1/4.jpg',
+            '/img/1/5.jpg',
+            '/img/1/6.jpg',
+            '/img/1/7.jpg',
+            '/img/1/8.jpg',
+            '/img/1/9.jpg',
+            '/img/1/10.jpg',
+            '/img/1/11.jpg',
+            '/img/1/12.jpg',
+            '/img/1/13.jpg',
+            '/img/1/14.jpg',
+            '/img/1/15.jpg'
+        ];
+    }])

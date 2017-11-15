@@ -1,33 +1,366 @@
-<!--========== SLIDER ==========-->
-<div class="promo-block" ng-init="loaded=false">
-    <div class="container">
-        <div class="margin-b-40">
-        	<h1 class="promo-block-title" style="font-weight: bolder;">Tripstr</h1>
-        	<p><div>
-        	<span  class="head-text">Be you be</span>
-             </p>
-             <p><span class="head-text">
-             	<typer words="['unique','YOUnique!']" type-time='150' pause="1500" backspace-time='50' start-delay='2000'></typer>
-             </span></p>
-             </div>
-        </div>
+<div class="allcontain">
+	<div ng-include onload="loaded=true" src="'/pages/header.html'"></div>
+<!--_______________________________________ Carousel__________________________________ -->
+<div class="allcontain">
+	<div id="carousel-up" class="carousel slide" data-ride="carousel">
+  		 <slider data-slides="slides"></slider>
+  
+  <script type="text/ng-template" id="slider.html">
 
+    <div data-ng-mousemove="pause()" data-ng-mouseleave="play()" class="slider">
+      <div data-ng-repeat="slide in slides" data-ng-show="isActiveIndex($index)" data-ng-class="{prev: isPrev}" class="slide {{setAnimation(slide.animate)}}">
+
+        <img class="slide-object" data-ng-src="{{slide.src}}" alt="Slide {{$index}}">
+      </div>
+
+      <div data-ng-show="slides.length > 1" class="slider-controls">
+
+        <a data-ng-click="prev()" class="control-d left">
+          <i class="icon fa fa-chevron-left"></i>
+        </a>
+        <a data-ng-click="next()" class="control-d right">
+          <i class="icon fa fa-chevron-right"></i>
+        </a>
+
+        <ol class="control-i">
+          <li data-ng-repeat="slide in slides" data-ng-class="{active: isActiveIndex($index)}" data-ng-click="setActiveIndex($index)" class="indicator"></li>
+        </ol>
+      </div>
     </div>
+  </script>
 </div>
-<!--========== SLIDER ==========-->
-<div ng-include onload="loaded=true" src="'/pages/header.html'"></div>
-<!--========== PAGE LAYOUT ==========-->
-<!-- Products -->
-<div ng-if="loaded===true" ng-include src="'/pages/service.html'"></div>
-<!-- End Service -->
+	</div>
 
-<div ng-if="loaded===true" ng-include src="'/pages/ourteam.html'"></div>
-
-<!-- Contact -->
-<div ng-if="loaded===true" ng-include src="'/pages/contact_form.html'"></div>
-<!-- End Contact -->
-<!--========== END PAGE LAYOUT ==========-->
-
-<!--========== FOOTER ==========-->
-<div ng-if="loaded===true" ng-include src="'/pages/footer.html'"></div>
-<!--========== END FOOTER ==========-->
+</div>
+<!-- ____________________Featured Section ______________________________--> 
+<div class="allcontain">
+	<div class="feturedsection">
+		<h1 class="text-center"><span class="bdots">&bullet;</span>FEATURES<span class="carstxt">PRODUCTS</span>&bullet;</h1>
+	</div>
+	<div class="feturedimage">
+		<div class="row firstrow">
+			<div class="col-lg-6 costumcol colborder1">
+				<div class="row costumrow">
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 img1colon">
+						<img src="img/9.jpg" style="margin-top: 20%;" alt="porsche">
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 txt1colon ">
+						<div class="featurecontant">
+							<h1>LOREM IPSUM</h1>
+							<p>"Lorem ipsum dolor sit amet, consectetur ,<br>
+			 						sed do eiusmod tempor incididunt </p>
+			 				<h2>Price &euro;</h2>
+			 				<button id="btnRM" onclick="rmtxt()">READ MORE</button>
+			 				<div id="readmore">
+			 						<h1>Car Name</h1>
+			 						<p>"Lorem ipsum dolor sit amet, consectetur ,<br>
+			 						sed do eiusmod tempor incididunt <br>"Lorem ipsum dolor sit amet, consectetur ,<br>
+			 						sed do eiusmod tempor incididunt"Lorem ipsum dolor sit amet, consectetur1 ,
+			 						sed do eiusmod tempor incididunt"Lorem ipsum dolor sit amet, consectetur1
+			 						sed do eiusmod tempor incididunt"Lorem ipsum dolor sit amet, consectetur1<br>
+			 						</p>
+			 						<button id="btnRL">READ LESS</button>
+			 				</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 costumcol colborder2">
+				<div class="row costumrow">
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 img2colon">
+						<img src="img/1.jpg" style="margin-top: 20%;" alt="porsche1">
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 txt1colon ">
+						<div class="featurecontant">
+							<h1>LOREM IPSUM</h1>
+							<p>"Lorem ipsum dolor sit amet, consectetur ,<br>
+			 						sed do eiusmod tempor incididunt </p>
+			 				<h2>Price &euro;</h2>
+			 				<button id="btnRM2">READ MORE</button>
+			 				<div id="readmore2">
+			 						<h1>Car Name</h1>
+			 						<p>"Lorem ipsum dolor sit amet, consectetur ,<br>
+			 						sed do eiusmod tempor incididunt <br>"Lorem ipsum dolor sit amet, consectetur ,<br>
+			 						sed do eiusmod tempor incididunt"Lorem ipsum dolor sit amet, consectetur1 ,
+			 						sed do eiusmod tempor incididunt"Lorem ipsum dolor sit amet, consectetur1
+			 						sed do eiusmod tempor incididunt"Lorem ipsum dolor sit amet, consectetur1<br></p>
+			 						<button id="btnRL2">READ LESS</button>
+			 				</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- ________________________LATEST CARS SECTION _______________________-->
+<div class="latestcars">
+	<h1 class="text-center">&bullet; LATEST PRODUCTS &bullet;</h1>
+	<ul class="nav nav-tabs navbar-left latest-navleft">
+		<li role="presentation" class="li-sortby"><span class="sortby">SORT BY: </span></li>
+		<li data-filter=".RECENT" role="presentation"><a href="#mostrecent" class="prcBtnR">MOST RECENT </a></li>
+		<li data-filter=".POPULAR" role="presentation"><a href="#mostpopular" class="prcBtnR">MOST POPULAR </a></li>
+		<li  role="presentation"><a href="#" class="alphSort">ALPHABETICAL </a></li>
+		<li data-filter=".HPRICE" role="presentation"><a href="#" class="prcBtnH">HIGHEST PRICE </a></li>
+		<li data-filter=".LPRICE" role="presentation"><a href="#" class="prcBtnL">LOWEST  PRICE </a></li>
+		<li id="hideonmobile">
+	</ul>
+</div>
+<br>
+<br>
+<!-- ________________________Latest Cars Image Thumbnail________________-->
+	<div class="grid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+				<div class="txthover">
+					<img src="img/6.jpg" alt="car1">
+						<div class="txtcontent">
+							<div class="stars">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+							<div class="simpletxt">
+								<h3 class="name">Lorem ipsum</h3>
+								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
+	 							sed do eiusmod tempor incididunt" </p>
+	 							<h4 class="price"> 1000&euro;</h4>
+	 							<button>READ MORE</button><br>
+	 							<div class="wishtxt">
+		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
+		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
+		 						</div>
+							</div>
+							<div class="stars2">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+						</div>
+				</div>	 
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
+				<div class="txthover">
+					<img src="img/2.jpg" alt="car2">
+						<div class="txtcontent">
+							<div class="stars">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+							<div class="simpletxt">
+								<h3 class="name">Lorem ipsum</h3>
+								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
+	 							sed do eiusmod tempor incididunt" </p>
+	 							<h4 class="price">900 &euro;</h4>
+	 							<button>READ MORE</button><br>
+	 							<div class="wishtxt">
+		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
+		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
+		 						</div>
+							</div>
+							<div class="stars2">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+						</div>
+				</div>	 
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+				<div class="txthover">
+					<img src="img/3.jpg" alt="car3">
+						<div class="txtcontent">
+							<div class="stars">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+							<div class="simpletxt">
+								<h3 class="name">Lorem ipsum</h3>
+								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
+	 							sed do eiusmod tempor incididunt" </p>
+	 							<h4 class="price">3000 &euro;</h4>
+	 							<button>READ MORE</button><br>
+	 							<div class="wishtxt">
+		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
+		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
+		 						</div>
+							</div>
+							<div class="stars2">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+						</div>
+				</div>	 
+			</div>
+			<!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+				<div class="txthover">
+					<img src="img/4.jpg" alt="car4">
+						<div class="txtcontent">
+							<div class="stars">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+							<div class="simpletxt">
+								<h3 class="name">Lorem ipsum</h3>
+								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
+	 							sed do eiusmod tempor incididunt" </p>
+	 							<h4 class="price">1000 &euro;</h4>
+	 							<button>READ MORE</button><br>
+	 							<div class="wishtxt">
+		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
+		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
+		 						</div>
+							</div>
+							<div class="stars2">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+						</div>
+				</div>	 
+			</div> -->
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+				<div class="txthover">
+					<img src="img/7.jpg" alt="car5">
+						<div class="txtcontent">
+							<div class="stars">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+							<div class="simpletxt">
+								<h3 class="name">Lorem ipsum</h3>
+								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
+	 							sed do eiusmod tempor incididunt" </p>
+	 							<h4 class="price">1200 &euro;</h4>
+	 							<button>READ MORE</button><br>
+	 							<div class="wishtxt">
+		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
+		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
+		 						</div>
+							</div>
+							<div class="stars2">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+						</div>
+				</div>	 
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+				<div class="txthover">
+					<img src="img/6.jpg" alt="car6">
+						<div class="txtcontent">
+							<div class="stars">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+							<div class="simpletxt">
+								<h3 class="name">Lorem ipsum</h3>
+								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
+	 							sed do eiusmod tempor incididunt" </p>
+	 							<h4 class="price">4000 &euro;</h4>
+	 							<button>READ MORE</button><br>
+	 							<div class="wishtxt">
+		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
+		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
+		 						</div>
+							</div>
+							<div class="stars2">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+						</div>
+				</div>	 
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+				<div class="txthover">
+					<img src="img/7.jpg" alt="car7">
+						<div class="txtcontent">
+							<div class="stars">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+							<div class="simpletxt">
+								<h3 class="name">Lorem ipsum</h3>
+								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
+	 							sed do eiusmod tempor incididunt" </p>
+	 							<h4 class="price">3000 &euro;</h4>
+	 							<button>READ MORE</button><br>
+	 							<div class="wishtxt">
+		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
+		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
+		 						</div>
+							</div>
+							<div class="stars2">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+						</div>
+				</div>	 
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+				<div class="txthover">
+					<img src="img/8.jpg" alt="car8">
+						<div class="txtcontent">
+							<div class="stars">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+							<div class="simpletxt">
+								<h3 class="name">Lorem ipsum</h3>
+								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
+	 							sed do eiusmod tempor incididunt" </p>
+	 							<h4 class="price">2500 &euro;</h4>
+	 							<button>READ MORE</button><br>
+	 							<div class="wishtxt">
+		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
+		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
+		 						</div>
+							</div>
+							<div class="stars2">
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+								<div class="glyphicon glyphicon-star"></div>
+							</div>
+						</div>
+				</div>	 
+			</div>	
+		</div>
+	</div>
+	<!-- ______________________________________________________Bottom Menu ______________________________-->
+	<div class="bottommenu" >
+		<div class="bottomlogo">
+		<span class="dotlogo">&bullet;</span><img src="img/TEW_ICON.png" alt="logo1"><span class="dotlogo">&bullet;;</span>
+		</div>
+		<ul class="nav nav-tabs bottomlinks">
+			<li role="presentation" ><a href="#/" role="button">ABOUT US</a></li>
+			<li role="presentation"><a href="#/">CATEGORIES</a></li>
+			<li role="presentation"><a href="#/">PREORDERS</a></li>
+			<li role="presentation"><a href="#/">CONTACT US</a></li>
+			<li role="presentation"><a href="#/">RECEIVE OUR NEWSLETTER</a></li>
+		</ul>
+		<p>"Lorem ipsum dolor sit amet, consectetur,  sed do eiusmod tempor incididunt <br>
+			eiusmod tempor incididunt </p>
+		 <img src="image/line.png" alt="line"> <br>
+		 <div class="bottomsocial">
+		 	<a href="#"><i class="fa fa-facebook"></i></a>
+			<a href="#"><i class="fa fa-twitter"></i></a>
+			<a href="#"><i class="fa fa-google-plus"></i></a>
+			<a href="#"><i class="fa fa-pinterest"></i></a>
+		</div>
+			<div class="footer">
+				<div class="copyright">
+				  &copy; Copy right 2016 | <a href="#">Privacy </a>| <a href="#">Policy</a>
+				</div>
+			</div>
+	</div>
+</div>
