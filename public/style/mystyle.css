@@ -151,8 +151,8 @@ padding-left: 5%;
 }
   #navbarontop > li > a {
   	font-family: 'BebasNeue Regular';
-  	font-size: 17px;
-  	color: #313943;
+  	font-size: 20px;
+  	color: #9c2e0cba;
     padding-top: 5px;
     padding-bottom: 6px;
     margin-bottom: 22px;
@@ -163,9 +163,8 @@ padding-left: 5%;
 
   }
   #navbarontop > li >a:hover{
-  	background-color: none!important;
-  	background: none!important;
-  	border-bottom: 2px solid #C59E47;
+  	color: white;
+    background-color: #e0b923cf;
   }
  
 
@@ -207,7 +206,8 @@ padding-left: 5%;
 }
 #navbarontop a:focus {
   outline: none;
-  border-bottom: 2px solid #C59E47; 
+  color: white;
+  background-color: #e0b923cf; 
 }
 .navbar-default .navbar-nav .open .dropdown-menu > li > a {
 	font-family: 'BebasNeue Regular';

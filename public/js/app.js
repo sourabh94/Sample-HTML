@@ -104,7 +104,9 @@ angular.module('eventManager', ['ngRoute'])
                 { src: './img/7.jpg',
                   caption: 'Slide 3' },
                 { src: './img/6.jpg',
-                  caption: 'Slide 4' }
+                  caption: 'Slide 4' },
+                { src: './img/5.png',
+                  caption: 'Slide 5' }
                 ];
             $scope.Trigger = function(){
                 $scope.start = true;
