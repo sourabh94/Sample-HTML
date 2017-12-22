@@ -2,7 +2,7 @@
     "products": [{
         "name": "Cut To Length Machine",
 		"code": "CTLM 04",
-        "imgPath":"/img/Cut To Length Machine.jpg",
+        "imgPath":"/img/Cut To Length Machine.JPG",
         "description":"As an eminent enterprise, we offer an exclusive range of Cut To Length Machine that is manufactured, exported and supplied by our professionals utilizing premium quality raw materials as per the latest market trends. This machine is available in different sizes as per the application requirements of the clients. The entire range of Cut To Length Machine is highly appreciated for easy usage, accurate functionality, corrosion & chemical resistance, compact design and durability. Clients can avail this machine from us as per their needs.",
         "features":["We manufacture CTL Lines 400-2500mm Width.","Thickness of the coil caries 0.20-20mm CRC, HR, CRNGO & SS Material.","Coil weight varies 3.0 tons to 30 tons.","Shear/Fly shear available both type. (Pneumatic clutch operated & Hydraulically operated).","Straightener/Rolls machine are made of Alloy steel material toughned & Machined.","Driven by gears or auxillery gear box.","Line speed up to 40 Meters per Minute.","Variable Speed of line as required.","Electrical Stopper Control Line-Optional.","Encoder with PLC Control base line-Optional.","NC Servo Motor Control Line-Optional.","Back trey, Conveyor or Stacking Table-Optional"],
         "specification":"<table class=\" table-bordered\"><tr><th>Model</th><th>3×1600</th><th>6×1600</th><th>8×2000</th><th>10×2200</th><th>12×2200</th><th>16×2200</th><th>20×2500</th><th>25×2500</th></tr><tr><td>Coil Thickness/mm</td><td>0.2-3</td><td>1-6</td><td>2-8</td><td>2-10</td><td>3-12</td><td>4-16</td><td>6-20</td><td>8-25</td></tr><tr><td>Coil Width/mm</td><td>1600</td><td>1600</td><td>2000</td><td>2200</td><td>2200</td><td>2200</td><td>2500</td><td>2500</td></tr><tr><td>Tolerance/mm</td><td>±0.5</td><td>±0.5</td><td>±1</td><td>±1</td><td>±1</td><td>±1</td><td>±1</td><td>±1</td></tr><tr><td>Leveling Roller</td><td>15</td><td>15</td><td>13</td><td>13</td><td>11</td><td>11</td><td>9</td><td>9</td></tr><tr><td>Roller Shaft Diameter/mm</td><td>90</td><td>140</td><td>155</td><td>160</td><td>180</td><td>200</td><td>230</td><td>260</td></tr></table>"
@@ -10,27 +10,27 @@
         {
         "name": "Tube Mill Rolls",
         "code": "TMR 02",
-        "imgPath":"/img/Tube Mill Rolls.jpg",
+        "imgPath":"/img/Tube Mill Rolls.JPG",
         "description":"With rich industry experience and knowledge, we manufacture and export superior quality Tube Mills Rolls. These mills rolls are designed and manufactured under the guidance of skilled professionals in compliance with international standards. The offered range of Tube Mills Rolls is known for its robust construction, corrosion resistance, high strength, easy installation, perfect finish and longer life. Available in various specifications, offered mills rolls can be custom designed as per the needs the clients within promised time frame."
         },
         {
         "name": "Industrial Tube Mills",
         "code": "TM 03",
-        "imgPath":"/img/Industrial Tube Mills.jpg",
+        "imgPath":"/img/Industrial Tube Mills.JPG",
         "description":"Our company is respected in the industry as the prime manufacturer and exporter of Tube Mills. The mills are wisely engineered by our proficient and experienced professionals making use of superlative grade materials. These mills are widely used in tube and pipe manufacturing industries for designing tubes in various diameters and lengths. Tube Mills offered by us are available in diverse working capacities and specifications to cater the specific requirements of our clients.",
         "features":["Energy efficient","Corrosion resistant","Long service life"]
         },
         {
         "name": "High Frequency Welder",
         "code": "HFW 06",
-        "imgPath":"/img/High Frequency Welder.jpg",
+        "imgPath":"/img/High Frequency Welder.JPG",
         "description":"We are an unparalleled name in offering a premium High Frequency Welder. This welder is designed and manufactured by our highly skilled professionals using supreme class raw materials as per the technological advancements. The offered welder is highly renowned for high tensile strength, precise dimensions, sturdy construction, corrosion resistance, user-friendliness and longer service life. High Frequency Welder is available different specifications to meet the diverse needs of clients at leading market rates.",
         "specification":"<table class=\" table-bordered\"><tr><th>Parameters</th><th></th></tr><tr><td>Power supply oscillator</td><td>Ac three-phase 380v/420v, 50hz/60z,75kva-1500kva</td></tr><tr><td>Oscillator frequency</td><td>200 khz-400khz</td></tr><tr><td>Output power</td><td>50 kw-1000kw</td></tr><tr><td>Cooling method</td><td>Water cooling</td></tr></table>"
         },
         {
         "name": "Hydrotester Machine",
         "code": "HM 09",
-        "imgPath":"/img/Hydrotester Machine.jpg",
+        "imgPath":"/img/Hydrotester Machine.JPG",
         "description":"Our customers can avail from us an excellent range of Hydrotester Machine. This machine is designed and manufactured at our premises using quality tested raw materials in compliance with international quality standards. The offered Hydrotester Machine is high demands for their less maintenance, precise dimensions, corrosion & chemical resistance and functional efficiency. In order to meet the international quality standards, this machine is stringently tested on various defined parameters. The offered machine is available in different specifications as per the needs of the clients.",
         "description2":"<p>Toshi offers single tube Hydro Testers equipped with oil/water high pressure (Up to 5000 psi) intensifiers, automatic handling system and chart type pressure recorders according to API/ASTM/BS standards.</p><br><ul><li>OD Sealing Type.</li><li>Oil and Water Intensifier.</li><li>Continuous Chart Type Pressure recorders & Pressure transducers for each tube results.</li><li>Closed Circuit blocking heads for automatic balancing of end thrust.</li><li>Quick change tooling.</li><li>Computerized data acquisition system.</li></ul>",
         "specification":"<table class=\" table-bordered\"><tr><th>Model</th><th>Tube Width mm</th><th>No of Heads</th><th>Test Pressure bar</th></tr><tr><td>TWE_9.0.</td><td>12.7-101.6</td><td>Single/Triple/Five</td><td>85</td></tr><tr><td>TWE_9.0.</td><td>12.7-101.6</td><td>Single/Triple</td><td>200</td></tr></table>"
@@ -38,7 +38,7 @@
         {
         "name": "Hot Dip Galvanising Plant",
         "code": "HDGP 27",
-        "imgPath":"/img/Hot Dip Galvanising Plant.jpg",
+        "imgPath":"/img/Hot Dip Galvanising Plant.JPG",
         "description":"Our company has specialization in this industry of Hot Dip Galvanizing Plants. These plants are widely installed at metal processing units for galvanizing tube and pipe structures. We make use of the excellent quality of materials and components for manufacturing these plants as per the set industrial quality standards. To cater the specific demands of our wide and reputed client base, we offer Hot Dip Galvanizing plants in different working capacities and specifications.",
         "features":["Hassle free functioning","Technically advanced","Low operational cost"],
         "specification":"<table class=\" table-bordered\"><tr><td>Standard:</td><td>Aisi,Astm,Din,Gb,Jis</td></tr><tr><td>Place Of Origin:</td><td>India</td></tr><tr><td>Type:</td><td>Steel Coil</td></tr><tr><td>Application:</td><td>Building,Construction,Household Appliances,Etc</td></tr><tr><td>Length:</td><td>According To Customer's Requirement</td></tr><tr><td>Coi Id:</td><td>508mm/610mm</td></tr><tr><td>Grade:</td><td>Dx51d+Z, Sgcc</td></tr><tr><td>Technique: </td><td>Cold Rolled</td></tr><tr><td>Special Use:</td><td> High-Strength Steel Plate</td></tr><tr><td>Sample:</td><td> Provided For Reference</td></tr><tr><td>Coil Weight:</td><td>4-10ton</td></tr><tr><td>Thickness:</td><td>0.14mm-2.0mm</td></tr><tr><td>Surface Treatment:</td><td>Galvanized</td></tr><tr><td>Width:</td><td>600mm-1250mm</td></tr><tr><td>Zinc Thickness:</td><td>40-180g/M2</td></tr><tr><td>Base Plate:</td><td>Cold Rolled Or Hot Rolled Steel</td></tr></table>"
@@ -46,32 +46,32 @@
         {
         "name": "Galvanising Pollution Plant",
         "code": "28",
-        "imgPath":"/img/Galvanising Pollution Plant.jpg",
+        "imgPath":"/img/Galvanising Pollution Plant.JPG",
         "description":"We are recognized as the prominent manufacturer and exporter of a wide collection of Galvanising Pollution Plant. The offered pollution plant is manufactured using supreme grade raw materials and latest technology in compliance with international standards. Tested on various parameters, this range of Galvanising Pollution Plant is offered in various specifications as per the requirements of clients. This pollution plant is known for features like easy installation, smooth functioning, environment friendliness and robustness. We offer this pollution plant at the most affordable prices to the clients."
         },
         {
         "name": "Galvanising Plant",
-        "imgPath":"/img/Galvanising Plant.jpg",
+        "imgPath":"/img/Galvanising Plant.JPG",
         "description":"We are an acclaimed name engaged in offering our precious clients a superior quality range of Galvanizing Plant that is used for glazing of Structure, Tube and Pipe. Our offered plant is manufactured by our experts using best grade components and latest technology in conformity with the industry quality norms. In addition to this, our provided plant undergoes different tests under the direction of quality controllers to make sure its flawlessness at clients' end. Clients canavail this plant from us at market leading rates.",
         "features":["Compact design.","Trouble-free operation.","Less power consumption."]
         },
         {
         "name": "ERW High Speed Tube Mill",
         "code": "TEW.01.3",
-        "imgPath":"/img/ERW High Speed Tube Mill.jpg",
+        "imgPath":"/img/ERW High Speed Tube Mill.JPG",
         "description":"The specification of ERW High-Speed Tube mill is available on demand of client."
         },
         {
         "name": "Hydraulic EOT Cranes",
         "code": "HEOTC 13",
-        "imgPath":"/img/Hydraulic EOT Cranes.jpg",
+        "imgPath":"/img/Hydraulic EOT Cranes.JPG",
         "description":"We offer a wide assortment of Hydraulic EOT Cranes, available in diverse capacities and specifications to match with the needs of our clients. Our company is manufacturing and exporting these EOT cranes, widely utilized in cement, steel, power and various other industries for lifting and moving heavy materials from one location to another. Hydraulic EOT Cranes are manufactured under the supervision of our skilful manpower by making use of supreme grade material and sophisticated techniques in compliance with the international quality standards.",
         "features":["Trouble free functioning","High load enduring capacity","Low operational cost"]
         },
         {
         "name": "Welding Unit",
         "code": "RTWU 38",
-        "imgPath":"/img/Welding Unit.jpg",
+        "imgPath":"/img/Welding Unit.JPG",
         "description":"We are a noteworthy organization in the domain, engaged in providing high quality range of 5 Roll Type Welding Unit. This welding unit is manufactured by our professionals using superior grade raw materials in line with international quality standards. The offered range of 5 Roll Type Welding Unit is available in different shapes and sizes as per the application requirements of the clients. Appreciated for dimensional accuracy, high strength, precise design, user friendly operations, safe functionality and longer life, this unit is extensively demanded in the market."
         }
     ]
