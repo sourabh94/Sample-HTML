@@ -7,6 +7,14 @@ angular.module('eventManager', ['ngRoute'])
                         templateUrl: 'pages/home.html',
                         controller: 'mainCtrl'
                     })
+                    .when('/about', {
+                        templateUrl: 'pages/about.html',
+                        controller: 'mainCtrl'
+                    })
+                    .when('/product/:product', {
+                        templateUrl: 'pages/productId.html',
+                        controller: 'productCtrl'
+                    })
                     .when('/gallery/video', {
                         templateUrl: 'pages/video.html',
                         controller: 'videoCtrl'
@@ -43,6 +51,11 @@ angular.module('eventManager', ['ngRoute'])
         directive.templateUrl = "pages/header.html";
         return directive;
         })
+        .filter("trust", ['$sce', function($sce) {
+          return function(htmlCode){
+          return $sce.trustAsHtml(htmlCode);
+          }
+        }])
         .factory('httpRequestInterceptor',['$sessionStorage', function ($sessionStorage) {
             return {
                 request: function (config) {
@@ -142,4 +155,19 @@ angular.module('eventManager', ['ngRoute'])
             '/img/1/14.jpg',
             '/img/1/15.jpg'
         ];
+    }])
+    .controller('productCtrl', ['$scope','$http', '$routeParams',function($scope,$http,$routeParams) {
+        var products;
+        $http.get("/products").then(function(data){
+          product = data.data.products;
+        }).then(function(){
+          for(var i = 0 ; i<product.length;i++){
+            if(product[i].name === $routeParams.product){
+              $scope.product = product[i];
+              $scope.specs = product[i].specification;
+            }
+          }  
+
+        });
+        
     }])

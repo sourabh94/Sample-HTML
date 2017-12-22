@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var async = require('async');
-var maindb = require('../service/DBService.js');
+//var async = require('async');
+//var maindb = require('../service/DBService.js');
 //var maindb = require('../service/CRUD.js');
-var ObjectID = require('mongodb').ObjectID;
+//var ObjectID = require('mongodb').ObjectID;
 var assert = require('assert');
 var randomstring = require("randomstring");
 var jwt = require('jsonwebtoken');
+var fs = require('fs');
 //var smtpTransport = require('nodemailer-smtp-transport');
 //var nodemailer = require('nodemailer');
 var jwtSecret = 'kjwdjs65$ikksop0982shj';
@@ -19,44 +20,22 @@ var jwtSecret = 'kjwdjs65$ikksop0982shj';
 router.get('/', function (req, res) {
     res.sendFile("../public/index.html");
 });
-router.get('/eventlist', function (req, res) {
-    maindb(function (db) {
-        db.collection('event').find().toArray(function (err, data) {
-            res.send(data);
-        });
-    });
-});
-router.get('/event/:name', function (req, res) {
-    console.log();
-    maindb(function (db) {
-        db.collection('event').findOne({event: req.params.name}, function (err, data) {
-            res.send(data);
-        });
-    });
-});
-router.post('/addQuery', function (req, res) {
-    console.log(req.body);
-    // transporter.sendMail({
-    //     from: 'debabrat das <debabrat.das@stu.utm.ac.in>',
-    //     to: 'sourabh.vijaypatil@stu.utm.ac.in',
-    //     subject: req.body.subject,
-    //     text: req.body
-    // }, function (error, response) {
-    //     console.log(error, response);
-    // });
-    maindb(function (db) {
-        db.collection('query').save(req.body).then(function (data) {
-            res.send(data);
-        });
-    });
 
+router.get('/google1db5d98c04cba720', function (req, res) {
+    res.sendFile("../public/google1db5d98c04cba720.html");
 });
-router.get('/query/:id', function (req, res) {
-    var id = new ObjectID(req.params.id);
-    maindb(function (db) {
-        db.collection('query').findOne({_id: id}, function (err, data) {
-            res.send(data);
-        });
-    });
+
+router.get('/products', function (req, res) {
+var obj;
+// Read the file and send to the callback
+fs.readFile("./routes/products.json", handleFile)
+
+// Write the callback function
+function handleFile(err, data) {
+    if (err) throw err
+    obj = JSON.parse(data)
+    res.send(obj);
+}
 });
+
 module.exports = router;
