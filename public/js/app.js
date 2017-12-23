@@ -67,6 +67,30 @@ angular.module('eventManager', ['ngRoute'])
         .factory('MyCache',[ '$cacheFactory',function ($cacheFactory) {
             return $cacheFactory('myCache');
         }])
+        .factory('products',['$http', function ($http) {
+            return {
+                request: function (config) {
+                    config.headers['token'] = $sessionStorage.atoken;
+                    return config;
+                }
+            };
+        }])
+    .factory("prodService", function ($http, $q) {
+            var getProduct = function () {
+                var defer = $q.defer();
+                $http.get("/products").then(function (result) {
+                    if (result.status === 200)
+                        defer.resolve(result);
+                    else
+                        defer.reject(result);
+                    console.log(result);
+                });
+                return defer.promise;
+            }
+            return{
+                getProduct:getProduct
+            }
+        })
     .controller('SliderController',[ '$scope','$timeout', function($scope, $timeout) {
     var settings = {
       animation: $scope.animation || 'animate-fade',
@@ -156,18 +180,15 @@ angular.module('eventManager', ['ngRoute'])
             '/img/1/15.jpg'
         ];
     }])
-    .controller('productCtrl', ['$scope','$http', '$routeParams',function($scope,$http,$routeParams) {
+    .controller('productCtrl', ['$scope','$http','$routeParams','prodService',function($scope,$http,$routeParams,prodService) {
         var products;
-        $http.get("/products").then(function(data){
+        prodService.getProduct().then(function(data){
           product = data.data.products;
-        }).then(function(){
-          for(var i = 0 ; i<product.length;i++){
+        for(var i = 0 ; i<product.length;i++){
             if(product[i].name === $routeParams.product){
               $scope.product = product[i];
               $scope.specs = product[i].specification;
             }
-          }  
-
+          }
         });
-        
     }])
