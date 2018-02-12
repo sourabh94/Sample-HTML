@@ -1,0 +1,262 @@
+extends layout
+
+block content
+    // ################################################################################################
+    // ################################################################################################
+    // ################################################################################################ 
+    .wrapper
+      #slider.clear(style="margin-top:3%;")
+        // ################################################################################################
+        .flexslider.basicslider
+          ul.slides
+            li
+              img(src='/images/01.jpg', alt='')
+              .txtoverlay
+                .centralise
+                  .verticalwrap
+                    article
+                      h2.heading.uppercase Toshi Engineering Works 
+                      
+            li
+              img(src='/images/2.jpg', alt='')
+              .txtoverlay
+                .centralise
+                  .verticalwrap
+                    article
+                      h2.heading.uppercase 
+            li
+              img(src='/images/3.jpg', alt='')
+              .txtoverlay
+                .centralise
+                  .verticalwrap
+                    article
+                      h2.heading.uppercase 
+        // ################################################################################################
+    // ################################################################################################
+    // ################################################################################################
+    // ################################################################################################
+    .wrapper(style="margin-top:3%;")
+      .centralise  
+        h1.heading(style="text-align:center;") Welcome to Toshi Engineering works!
+        p
+         | We, Toshi Engineering Works, commenced our business operation in the year 2006. We are working as a renowned Manufacturer and Exporter to serve the changing needs and requirements of the customers on time. We offer comprehensive gamut of products like 
+         | <b> SS Tube Mill, Mild Steel Tube Mill, Carbon Steel Tube Mill, A.P.I. tube mill, Tube Mill 1/2 to 20 H R, G. I. Plant, H. F. Welder, EOT Crane, Slitting Line etc.</b>
+         | Our products are shaped using latest technology and high grade raw material. Our team of quality inspectors tests the gamut on varied parameters to ensure delivery of only optimum range of products. They make sure that each range matches to both national and international standards of quality. In addition to this, we follow ethical and transparent business policies throughout our business operation that has won us the valuable trust and confidence of numerous companies in India and abroad. We understand customer satisfaction is the key to success in this competitive scenario. And precisely, this is the area we feel we can beat the heat. 
+    .wrapper.row2
+      #services.clear
+        // ################################################################################################
+        .group
+          .one_third.first
+            article.service
+              i.icon.red.circle.fa.fa-bell-o
+              h2.heading Consultancy
+              p.btmspace-10
+                |  Our engineers have an experience of over four decades in tube mill industries. We delivers cost-effective solutions to Clients to maximize their assets, improve competitive positioning, and increase long-term business success. 
+              p
+                a(href='#') Read More »
+          .one_third
+            article.service
+              i.icon.orange.circle.fa.fa-book
+              h2.heading Conceptual Studies
+              p.btmspace-10
+                | Our engineers prepare detailed feasibility reports including studies for site selection, market analysis, refinery configuration, procurement strategy, capital cost estimates, and financial evaluation.
+              p
+                a(href='#') Read More »
+          .one_third
+            article.service
+              i.icon.green.circle.fa.fa-mortar-board
+              h2.heading Engineering Services
+              p.btmspace-10
+                | Engineering services include front-end engineering and design (FEED), detail design, and engineering expertise that range from traditional disciplines: such as civil, electrical, instrumentation, mechanical and structural engineering.
+              p
+                a(href='#') Read More »
+        // ################################################################################################
+        .clear
+    // ################################################################################################
+    // ################################################################################################
+    // ################################################################################################
+    .wrapper.row6
+      section#cta.clear
+          h1.heading(style="text-align:center;") Most popular products
+    // ################################################################################################
+    // ################################################################################################
+    .wrapper.row2
+      .latest
+        // ################################################################################################
+        ul.nospace.group
+          li
+            figure
+              a.overlay(href='#')
+                img(src='/images/ITM.jpg', alt='')
+              figcaption.inspace-30.center
+                p.bold.uppercase Industrial tube mills
+                p
+                  a(href='#') View Here »
+          li
+            figure
+              a.overlay(href='#')
+                img(src='/images/CTLM.jpg', alt='')
+              figcaption.inspace-30.center
+                p.bold.uppercase Cut To Length Machine
+                p
+                  a(href='#') View Here »
+          li
+            figure
+              a.overlay(href='#')
+                img(src='/images/ERWHSTM.jpg', alt='')
+              figcaption.inspace-30.center
+                p.bold.uppercase ERW High Speed Tube Mill
+                p
+                  a(href='#') View Here »
+          li
+            figure
+              a.overlay(href='#')
+                img(src='/images/HM.jpg', alt='')
+              figcaption.inspace-30.center
+                p.bold.uppercase Hydrotester Machine
+                p
+                  a(href='#') View Here »
+          li
+            figure
+              a.overlay(href='#')
+                img(src='/images/HFW.jpg', alt='')
+              figcaption.inspace-30.center
+                p.bold.uppercase High Frequency Welder
+                p
+                  a(href='#') View Here »
+        // ################################################################################################
+    // ################################################################################################
+    // ################################################################################################
+    // ################################################################################################
+    .wrapper.row3
+      main.container.nospace.clear
+        // main body
+        // ################################################################################################
+        .group
+            h2.heading.uppercase.btmspace-50 About Us
+            ul.nospace.group
+              li.btmspace-30
+                article.service.largeicon
+                  i.icon.nobg.circle.fa.fa-ra
+                  h6.heading  Mission
+                  p
+                    | To supply high-quality tube mills and providing related services and solutions to a worldwide client base while utilizing innovative technologies within an environment of motivated employees focused on continuous improvement, highest business standards, work ethics and leading to added value to our customers.
+
+              li.btmspace-30
+                article.service.largeicon
+                  i.icon.nobg.circle.fa.fa-eye
+                  h6.heading Vision
+                  p
+                    | To manufacture products comparable to international standards, to be customer-focused and globally competitive through better quality, latest technology and continuous innovation.
+              li
+                article.service.largeicon
+                  i.icon.nobg.circle.fa.fa-history
+                  h6.heading Values
+                  p
+                    ul(style="list-style-type: none;")
+                      li Customer's satisfaction and delight.
+                      li Superior quality of performance.
+                      li Act with honesty and integrity.
+                      li Passionate about excellence.
+                      li Always work effectively and efficiently.
+        // ################################################################################################
+        // / main body
+        .clear
+    // ################################################################################################
+    // ################################################################################################
+    // ################################################################################################
+    .wrapper.row4
+      footer#footer.clear
+        // ################################################################################################
+        .one_quarter.first
+          h6.title Company Details
+          address.btmspace-15
+            | Company Name
+            br
+            |       Street Name & Number
+            br
+            |       Town
+            br
+            |       Postcode/Zip
+          ul.nospace
+            li.btmspace-10
+              span.fa.fa-phone
+              |  +00 (123) 456 7890
+            li
+              span.fa.fa-envelope-o
+              |  info@domain.com
+        .one_quarter
+          h6.title Quick Links
+          ul.nospace.linklist
+            li
+              a(href='#') Home Page
+            li
+              a(href='#') Blog
+            li
+              a(href='#') Gallery
+            li
+              a(href='#') Portfolio
+            li
+              a(href='#') Contact Us
+        .one_quarter
+          h6.title From The Blog
+          article
+            h2.nospace
+              a(href='#') Lorem ipsum dolor
+            time.smallfont(datetime='2045-04-06')
+              | Friday, 6
+              sup th
+              |  April 2045
+            p
+              | Vestibulumaccumsan egestibulum eu justo convallis augue estas aenean elit intesque sed.
+        .one_quarter
+          h6.title Keep In Touch
+          form.btmspace-30(method='post', action='#')
+            fieldset
+              legend Newsletter:
+              input.btmspace-15(type='text', value='', placeholder='Email')
+              button(type='submit', value='submit') Submit
+          ul.faico.clear
+            li
+              a.faicon-facebook(href='#')
+                i.fa.fa-facebook
+            li
+              a.faicon-twitter(href='#')
+                i.fa.fa-twitter
+            li
+              a.faicon-linkedin(href='#')
+                i.fa.fa-linkedin
+            li
+              a.faicon-google-plus(href='#')
+                i.fa.fa-google-plus
+            li
+              a.faicon-instagram(href='#')
+                i.fa.fa-instagram
+            li
+              a.faicon-tumblr(href='#')
+                i.fa.fa-tumblr
+        // ################################################################################################
+    // ################################################################################################
+    // ################################################################################################
+    // ################################################################################################
+    .wrapper.row5
+      #copyright.clear
+        // ################################################################################################
+        p.fl_left
+          | Copyright © 2015 - All Rights Reserved - 
+          a(href='#') Domain Name
+        p.fl_right
+          | Template by 
+          a(target='_blank', href='http://www.os-templates.com/', title='Free Website Templates') OS Templates
+        // ################################################################################################
+    // ################################################################################################
+    // ################################################################################################
+    // ################################################################################################
+    a#backtotop(href='#top')
+      i.fa.fa-chevron-up
+    // JAVASCRIPTS
+    script(src='layout/scripts/jquery.min.js')
+    script(src='layout/scripts/jquery.backtotop.js')
+    script(src='layout/scripts/jquery.mobilemenu.js')
+    script(src='layout/scripts/jquery.flexslider-min.js')
+

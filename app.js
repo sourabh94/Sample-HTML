@@ -1,43 +1,31 @@
 var express = require('express');
 var path = require('path');
+var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 var compression = require('compression');
 var app = express();
 
+app.use(compression());
 // view engine setup
-app.set('public', path.join(__dirname, 'public'));
-app.set('view engine', 'html');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(compression());
 
 app.use('/', index);
-app.use('/admin', users);
-
-
-  // Here we require the prerender middleware that will handle requests from Search Engine crawlers 
-  // We set the token only if we're using the Prerender.io service 
-//app.use(prerender); 
-// app.get('*', function(req, res){ 
-//   res.sendfile('./public/index.html'); 
-// });
-app.use(function (req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers",
-               "Origin, X-Requested-With, Content-Type, Accept");
-    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-    res.setHeader('Content-Type', 'application/json');
-    next();
-});
-
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

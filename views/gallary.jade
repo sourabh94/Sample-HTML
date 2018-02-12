@@ -1,0 +1,239 @@
+extends layout
+
+block content
+
+.wrapper.row1
+  header#header.clear
+    // ################################################################################################
+    #logo.fl_left
+      h1
+        a(href='../index.html') Colossus
+    // ################################################################################################
+    nav#mainav.fl_right
+      ul.clear
+        li
+          a(href='../index.html') Home
+        li.active
+          a.drop(href='#') Pages
+          ul
+            li.active
+              a(href='gallery.html') Gallery
+            li
+              a(href='full-width.html') Full Width
+            li
+              a(href='sidebar-left.html') Sidebar Left
+            li
+              a(href='sidebar-right.html') Sidebar Right
+            li
+              a(href='basic-grid.html') Basic Grid
+        li
+          a.drop(href='#') Dropdown
+          ul
+            li
+              a(href='#') Level 2
+            li
+              a.drop(href='#') Level 2 + Drop
+              ul
+                li
+                  a(href='#') Level 3
+                li
+                  a(href='#') Level 3
+        li
+          a(href='#') Link Text
+        li
+          a(href='#') Link Text
+    // ################################################################################################
+// ################################################################################################
+// ################################################################################################
+// ################################################################################################
+.wrapper.row2
+  #breadcrumb.clear
+    // ################################################################################################
+    ul
+      li
+        a(href='#') Home
+      li
+        a(href='#') Lorem
+      li
+        a(href='#') Ipsum
+      li
+        a(href='#') Dolor
+    // ################################################################################################
+// ################################################################################################
+// ################################################################################################
+// ################################################################################################
+.wrapper.row3
+  main.container.clear
+    // main body
+    // ################################################################################################
+    .content
+      // ################################################################################################
+      #gallery
+        figure
+          header.heading Gallery Title Goes Here
+          ul.nospace.clear
+            li.one_quarter.first
+              a(href='#')
+                img(src='../images/demo/gallery/01.png', alt='')
+            li.one_quarter
+              a(href='#')
+                img(src='../images/demo/gallery/01.png', alt='')
+            li.one_quarter
+              a(href='#')
+                img(src='../images/demo/gallery/01.png', alt='')
+            li.one_quarter
+              a(href='#')
+                img(src='../images/demo/gallery/01.png', alt='')
+            li.one_quarter.first
+              a(href='#')
+                img(src='../images/demo/gallery/01.png', alt='')
+            li.one_quarter
+              a(href='#')
+                img(src='../images/demo/gallery/01.png', alt='')
+            li.one_quarter
+              a(href='#')
+                img(src='../images/demo/gallery/01.png', alt='')
+            li.one_quarter
+              a(href='#')
+                img(src='../images/demo/gallery/01.png', alt='')
+            li.one_quarter.first
+              a(href='#')
+                img(src='../images/demo/gallery/01.png', alt='')
+            li.one_quarter
+              a(href='#')
+                img(src='../images/demo/gallery/01.png', alt='')
+            li.one_quarter
+              a(href='#')
+                img(src='../images/demo/gallery/01.png', alt='')
+            li.one_quarter
+              a(href='#')
+                img(src='../images/demo/gallery/01.png', alt='')
+          figcaption Gallery Description Goes Here
+      // ################################################################################################
+      // ################################################################################################
+      nav.pagination
+        ul
+          li
+            a(href='#') « Previous
+          li
+            a(href='#') 1
+          li
+            a(href='#') 2
+          li
+            strong …
+          li
+            a(href='#') 6
+          li.current
+            strong 7
+          li
+            a(href='#') 8
+          li
+            a(href='#') 9
+          li
+            strong …
+          li
+            a(href='#') 14
+          li
+            a(href='#') 15
+          li
+            a(href='#') Next »
+      // ################################################################################################
+    // ################################################################################################
+    // / main body
+    .clear
+// ################################################################################################
+// ################################################################################################
+// ################################################################################################
+.wrapper.row4
+  footer#footer.clear
+    // ################################################################################################
+    .one_quarter.first
+      h6.title Company Details
+      address.btmspace-15
+        | Company Name
+        br
+        |       Street Name & Number
+        br
+        |       Town
+        br
+        |       Postcode/Zip
+      ul.nospace
+        li.btmspace-10
+          span.fa.fa-phone
+          |  +00 (123) 456 7890
+        li
+          span.fa.fa-envelope-o
+          |  info@domain.com
+    .one_quarter
+      h6.title Quick Links
+      ul.nospace.linklist
+        li
+          a(href='#') Home Page
+        li
+          a(href='#') Blog
+        li
+          a(href='#') Gallery
+        li
+          a(href='#') Portfolio
+        li
+          a(href='#') Contact Us
+    .one_quarter
+      h6.title From The Blog
+      article
+        h2.nospace
+          a(href='#') Lorem ipsum dolor
+        time.smallfont(datetime='2045-04-06')
+          | Friday, 6
+          sup th
+          |  April 2045
+        p
+          | Vestibulumaccumsan egestibulum eu justo convallis augue estas aenean elit intesque sed.
+    .one_quarter
+      h6.title Keep In Touch
+      form.btmspace-30(method='post', action='#')
+        fieldset
+          legend Newsletter:
+          input.btmspace-15(type='text', value='', placeholder='Email')
+          button(type='submit', value='submit') Submit
+      ul.faico.clear
+        li
+          a.faicon-facebook(href='#')
+            i.fa.fa-facebook
+        li
+          a.faicon-twitter(href='#')
+            i.fa.fa-twitter
+        li
+          a.faicon-linkedin(href='#')
+            i.fa.fa-linkedin
+        li
+          a.faicon-google-plus(href='#')
+            i.fa.fa-google-plus
+        li
+          a.faicon-instagram(href='#')
+            i.fa.fa-instagram
+        li
+          a.faicon-tumblr(href='#')
+            i.fa.fa-tumblr
+    // ################################################################################################
+// ################################################################################################
+// ################################################################################################
+// ################################################################################################
+.wrapper.row5
+  #copyright.clear
+    // ################################################################################################
+    p.fl_left
+      | Copyright © 2015 - All Rights Reserved - 
+      a(href='#') Domain Name
+    p.fl_right
+      | Template by 
+      a(target='_blank', href='http://www.os-templates.com/', title='Free Website Templates') OS Templates
+    // ################################################################################################
+// ################################################################################################
+// ################################################################################################
+// ################################################################################################
+a#backtotop(href='#top')
+  i.fa.fa-chevron-up
+// JAVASCRIPTS
+script(src='../layout/scripts/jquery.min.js')
+script(src='../layout/scripts/jquery.backtotop.js')
+script(src='../layout/scripts/jquery.mobilemenu.js')
