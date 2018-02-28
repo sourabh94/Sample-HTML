@@ -11,13 +11,20 @@ router.get('/about', function(req, res, next) {
   res.sendfile('./public/pages/about.html');
 });
 
-router.get('/gallery/photo', function(req, res, next) {
-  res.sendfile('./public/pages/gallery.html');
+router.get('/gallery/photo/:page', function(req, res, next) {
+  console.log('This came in as param ',req.params.page);
+  if (req.params.page==='0')
+  	res.sendfile('./public/pages/gallery.html');	
+  else
+  	res.sendfile('./public/pages/gallery'+req.params.page+'.html');
+});
+
+router.get('/gallery/video', function(req, res, next) {
+  res.sendfile('./public/pages/video.html');
 });
 
 router.get('/product/:id', function(req, res, next) {
-  console.log(req.params.id);
-  //console.log(filePath);
+  //console.log(req.params.id);
   res.sendfile('./public/pages/'+req.params.id+'.html');
 });
 
@@ -30,6 +37,11 @@ router.get('/businessEnquiry', function(req, res, next) {
 });
 
 router.get('/contact', function(req, res, next) {
+  res.sendfile('./public/pages/contact.html');
+});
+
+router.post('/contact', function(req, res, next) {
+  console.log(req.body);
   res.sendfile('./public/pages/contact.html');
 });
 

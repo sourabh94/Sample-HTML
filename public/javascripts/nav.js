@@ -15,11 +15,7 @@ radioAlert.innerHTML = '<header class="clear" id="header">'+
                 '<li><a href="/product/Rolls">Rolls</a></li>'+
                 '<li><a href="/product/Horizontal Strip Accumulator">Horizontal Strip Accumulator</a></li>'+
                 '<li><a href="/product/Cut To Length">Cut To Length</a></li>'+
-                '<li><a class="drop" href="#">High Frequency Welder</a>'+
-                  '<ul style="width:250px;left:240px">'+
-                    '<li><a href="/product/Solid State Induction Welder">Solid State Induction Welder</a></li>'+
-                    '<li><a href="/product/Vacuum Tube Welders">Vacuum Tube Welders</a></li>'+
-                  '</ul>'+
+                '<li><a href="/product/High Frequency Welder">High Frequency Welder</a>'+
                 '</li>'+
                 '<li><a class="drop" href="#">Cold Saw </a>'+
                   '<ul style="width:250px;left:240px">'+
@@ -43,7 +39,7 @@ radioAlert.innerHTML = '<header class="clear" id="header">'+
             '</li>'+
             '<li><a class="drop" href="#">Gallery</a>'+
               '<ul>'+
-                '<li><a href="/gallery/photo">Photo</a></li>'+
+                '<li><a href="/gallery/photo/0">Photo</a></li>'+
                 '<li><a href="/gallery/video">Video</a></li>'+
               '</ul>'+
             '</li>'+

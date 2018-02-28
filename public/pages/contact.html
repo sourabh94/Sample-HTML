@@ -84,7 +84,7 @@ input[type=submit]:hover {
     <h1 class="heading" style="text-align:center">Contact Us</h1>
 
 <div class="container" style="text-align: center;width: 50%;float: left;" >
-  <form action="/action_page.php">
+  <form action="/contact" method="post">
     <div class="row">
       <div class="col-25">
         <label for="fname" style="margin: 2%;">First Name</label>
@@ -115,6 +115,14 @@ input[type=submit]:hover {
       </div>
       <div class="col-75">
         <input type="number" name="phone" id="phone" placeholder="Your Phone...">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="message">Message</label>
+      </div>
+      <div class="col-75">
+        <textarea rows="4" placeholder="Your message..." id="message" name="message"></textarea>
       </div>
     </div>
     <div class="row" style="margin-top: 5%;">
