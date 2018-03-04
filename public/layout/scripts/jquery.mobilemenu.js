@@ -15,25 +15,21 @@ $('<form action="#"><select /></form>').appendTo("#mainav");
 $("#mainav a").each(function() {
     var e = $(this);
     if ($(e).parents("ul ul ul").length >= 1) {
-        if(e.attr("href")!=='#')
         $("<option />", {
             value: e.attr("href"),
-            text: "" + e.text()
+            text: "\xa0\xa0\xa0\xa0\xa0" + e.text()
         }).appendTo("#mainav select")
     } else if ($(e).parents("ul ul").length >= 1) {
-        if(e.attr("href")!=='#')
         $("<option />", {
             value: e.attr("href"),
-            text: "   " + e.text()
+            text: "\xa0\xa0" + e.text()
         }).appendTo("#mainav select")
     } else if ($(e).parents("ul").length >= 1) {
-        if(e.attr("href")!=='#')
         $("<option />", {
             value: e.attr("href"),
             text: "" + e.text()
         }).appendTo("#mainav select")
     } else {
-    	if(e.attr("href")!=='#')
         $("<option />", {
             value: e.attr("href"),
             text: e.text()
