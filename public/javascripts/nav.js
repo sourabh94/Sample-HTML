@@ -3,7 +3,7 @@ radioAlert.innerHTML = '<header class="clear" id="header">'+
         '<div class="fl_left" id="logo"><h1><a href="/"> <img src="/images/TEW_ICON.PNG" alt="Toshi Engineering Works"></a></h1></div>'+
         '<nav class="fl_right" id="mainav"><ul class="clear">'+
             '<li><a href="/">Home</a></li><li><a href="/about">About Us</a></li>'+
-            '<li><a class="drop" href="#">Products</a>'+
+            '<li value="Products"><a class="drop" href="#">Products</a>'+
               '<ul style="width:250px">'+
                 '<li><a class="drop" href="#">Tube Mills</a>'+
                   '<ul style="width:250px;left:240px">'+
