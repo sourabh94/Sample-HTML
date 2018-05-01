@@ -10,6 +10,7 @@ radioAlert.innerHTML = '<header class="clear" id="header">'+
                     '<li><a href="/product/Carbon Steel Tube Mill">Carbon Steel Tube Mill</a></li>'+
                     '<li><a href="/product/Stainless Steel Tube Mill">Stainless Steel Tube Mill</a></li>'+
                     '<li><a href="/product/ERW High Speed Tube Mill">ERW High Speed Tube Mill</a></li>'+
+                    '<li><a href="/product/API Tube Mill">API Tube Mill</a></li>'+
                   '</ul>'+
                 '</li>'+
                 '<li><a href="/product/Rolls">Rolls</a></li>'+

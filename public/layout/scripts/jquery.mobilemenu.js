@@ -17,12 +17,12 @@ $("#mainav a").each(function() {
     if ($(e).parents("ul ul ul").length >= 1) {
         $("<option />", {
             value: e.attr("href"),
-            text: "\xa0\xa0\xa0\xa0\xa0" + e.text()
+            text: "---" + e.text()
         }).appendTo("#mainav select")
     } else if ($(e).parents("ul ul").length >= 1) {
         $("<option />", {
             value: e.attr("href"),
-            text: "\xa0\xa0" + e.text()
+            text: "--" + e.text()
         }).appendTo("#mainav select")
     } else if ($(e).parents("ul").length >= 1) {
         $("<option />", {
